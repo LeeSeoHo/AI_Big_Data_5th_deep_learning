@@ -1,0 +1,12 @@
+{'parts': [{'description': 'Recurrence for multi-agent minimiax',
+            'extraCredit': False,
+            'maxPoints': 5,
+            'messages': ['?'],
+            'name': '1a',
+            'points': '?'},
+           {'description': 'Recurrence for multi-agent expectimax',
+            'extraCredit': False,
+            'maxPoints': 5,
+            'messages': ['?'],
+            'name': '3a',
+            'points': '?'}]}
