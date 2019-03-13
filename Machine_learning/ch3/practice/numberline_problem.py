@@ -39,4 +39,4 @@ bts = backtracking_search.BacktrackingSearch(verbose=3)
 
 import uniform_cost_search
 ucs = uniform_cost_search.UniformCostSearch(verbose=3)
-# print(ucs.solve(problem))
+print(ucs.solve(problem))

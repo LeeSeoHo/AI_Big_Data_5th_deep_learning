@@ -35,13 +35,13 @@ class TransportationProblem(util.SearchProblem):
 problem = TransportationProblem(7)
 
 import backtracking_search
-bts = backtracking_search.BacktrackingSearch(verbose=3)
-print(bts.solve(problem))
+#bts = backtracking_search.BacktrackingSearch(verbose=3)
+#print(bts.solve(problem))
 
 import dynamic_programming_search
-dps = dynamic_programming_search.DynamicProgrammingSearch(verbose=1)
-# dps = dynamic_programming_search.DynamicProgrammingSearch(memory_use=False, verbose=1)
-# print(dps.solve(problem))
+#dps = dynamic_programming_search.DynamicProgrammingSearch(verbose=1)
+dps = dynamic_programming_search.DynamicProgrammingSearch(memory_use=True, verbose=1)
+print(dps.solve(problem))
 
 import uniform_cost_search
 ucs = uniform_cost_search.UniformCostSearch(verbose=3)
