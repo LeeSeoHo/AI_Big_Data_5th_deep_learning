@@ -13,11 +13,26 @@ class JointSegmentationInsertionProblem(util.SearchProblem):
         # position before which text is reconstructed & previous word
         return 0, wordsegUtil.SENTENCE_BEGIN
 
+	#0 현재까지 처리한 char수 / 이전까지 만들었던 단어의 수
+	# 구현할 때는 loop를 2번 사용
+	# loop 1개, space 쪼개는 곳, loop 1개 : candidate 조개는 부분 중 2중 loop
+
     def is_end(self, state):
         return state[0] == len(self.query)
 
     def succ_and_cost(self, state):
-        raise NotImplementedError
+        pos, current_word = state
+        for i in range(pos + 1, len(self.query)+1):
+            vowel_removed_word = self.query[pos:i]
+            fills = self.possibleFills(vowel_removed_word)
+            for fill in fills:
+                next_state = i,fill
+                cost = self.bigramCost(current_word, fill)
+                yield fill, next_state, cost  # return action, state, cost
+	# use "self.possibleFills(vowel_removed_word)" instead of
+	# "self.possilbeFills(vowel_removed_word)" | {vowel_removed_word}"
+	#
+	# user two ovelapped loops(중첩)
 
 unigramCost, bigramCost = wordsegUtil.makeLanguageModels('leo-will.txt')
 smoothCost = wordsegUtil.smoothUnigramAndBigram(unigramCost, bigramCost, 0.2)
